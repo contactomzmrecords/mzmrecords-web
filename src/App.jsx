@@ -8,6 +8,7 @@ import Radio from "./Components/Radio";
 import Events from "./Components/Events";
 import Footer from "./Components/Footer";
 import Media from "./Components/Media";
+import EventDetail from "./Components/EventDetail";
 
 export default function App() {
   const { pathname } = useLocation();
@@ -31,6 +32,7 @@ export default function App() {
           <Route path="/artists" element={<Artists />} />
           <Route path="/radio" element={<Radio />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/events/:id" element={<EventDetail />} />
           <Route path="/media" element={<Media />} />
 
           <Route path="/about" element={

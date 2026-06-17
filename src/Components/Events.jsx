@@ -1,6 +1,19 @@
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { Construction } from "lucide-react";
+import { getEvents } from "../lib/api";
 
 export default function Events() {
+    const [events, setEvents] = useState([]);
+
+useEffect(() => {
+    getEvents()
+        .then((data) => {
+            console.log("EVENTOS:", data);
+            setEvents(data);
+        })
+        .catch(console.error);
+}, []);
     return (
         <section id="events" className="py-32 border-b border-[var(--line)]">
             <div className="max-w-[var(--max)] mx-auto px-6">
@@ -14,14 +27,41 @@ export default function Events() {
                     </div>
                 </div>
 
-                {/* Under Construction State */}
-                <div className="border border-white/10 rounded-sm bg-white/[0.02] py-32 flex flex-col items-center justify-center text-center">
-                    <Construction size={48} className="text-white/20 mb-6 animate-pulse" />
-                    <h3 className="text-3xl font-extrabold uppercase italic mb-4">coming soon</h3>
-                    <p className="text-[var(--muted)] max-w-sm font-medium">
-                        There are currently no scheduled dates. Check back soon for our upcoming events.
-                    </p>
-                </div>
+                <div className="grid md:grid-cols-2 gap-8">
+    {events.map((event) => (
+    <div
+        key={event.id}
+        className="border border-white/10 bg-white/[0.02] overflow-hidden"
+    >
+            <img
+                src={event.image_url}
+                alt={event.name}
+                className="w-full h-64 object-cover"
+            />
+
+            <div className="p-6">
+                <h3 className="text-2xl font-bold mb-3">
+                    {event.name}
+                </h3>
+
+                <p className="text-sm text-white/40 mb-2">
+    {new Date(event.date).toLocaleDateString()}
+</p>
+
+                <p className="text-white/60 mb-4">
+                    {event.location}
+                </p>
+
+                <Link
+    to={`/events/${event.id}`}
+    className="inline-block bg-white text-black px-4 py-2 font-bold"
+>
+    VIEW DETAILS
+</Link>
+            </div>
+        </div>
+    ))}
+</div>
             </div>
         </section>
     );
