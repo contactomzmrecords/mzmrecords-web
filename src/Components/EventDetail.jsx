@@ -13,6 +13,7 @@ export default function EventDetail() {
     const [phone, setPhone] = useState("");
     const [order, setOrder] = useState(null);
     const [paymentInfo, setPaymentInfo] = useState(null);
+    const [selectedBank, setSelectedBank] = useState("lafise");
     const [receipt, setReceipt] = useState(null);
     const [receiptUploaded, setReceiptUploaded] = useState(false);
     const [orderStatus, setOrderStatus] = useState(null);
@@ -39,6 +40,9 @@ export default function EventDetail() {
             </section>
         );
     }
+
+const bankInfo =
+    paymentInfo?.banks?.[selectedBank] ?? null;
 
     return (
         <section className="max-w-[var(--max)] mx-auto px-6 pt-40 pb-20 text-white">
@@ -162,6 +166,7 @@ export default function EventDetail() {
     onChange={(e) => setPhone(e.target.value)}
     className="w-full bg-black border border-white/20 p-3"
 />
+
     <button
     disabled={!!order}
     onClick={async () => {
@@ -178,6 +183,7 @@ export default function EventDetail() {
                     },
                 ],
                 payment_method: "bank_transfer",
+                selected_bank: selectedBank,
             });
 
             setOrder(order);
@@ -209,35 +215,70 @@ export default function EventDetail() {
         </p>
 
         <div className="mb-6">
-            <h3 className="font-bold mb-2">
-                Transferencia Bancaria
-            </h3>
+    <h3 className="font-bold mb-4">
+        Selecciona el banco
+    </h3>
 
+    <div className="flex gap-3 mb-6">
+        <button
+            type="button"
+            onClick={() => setSelectedBank("lafise")}
+            className={`px-4 py-2 border ${
+                selectedBank === "lafise"
+                    ? "bg-white text-black"
+                    : "border-white/30"
+            }`}
+        >
+            LAFISE
+        </button>
+
+        <button
+            type="button"
+            onClick={() => setSelectedBank("bac")}
+            className={`px-4 py-2 border ${
+                selectedBank === "bac"
+                    ? "bg-white text-black"
+                    : "border-white/30"
+            }`}
+        >
+            BAC
+        </button>
+
+        <button
+            type="button"
+            onClick={() => setSelectedBank("banpro")}
+            className={`px-4 py-2 border ${
+                selectedBank === "banpro"
+                    ? "bg-white text-black"
+                    : "border-white/30"
+            }`}
+        >
+            Banpro
+        </button>
+    </div>
+
+    {bankInfo && (
+        <>
             <p>
-                Banco: {paymentInfo.bank_transfer.bank}
+                <strong>Banco:</strong> {bankInfo.bank}
             </p>
 
             <p>
-                Cuenta: {paymentInfo.bank_transfer.account_number}
+                <strong>Titular:</strong> {bankInfo.account_name}
             </p>
 
             <p>
-                Titular: {paymentInfo.bank_transfer.account_name}
+                <strong>Cuenta:</strong> {bankInfo.account_number}
             </p>
-        </div>
+
+            <p>
+                <strong>Tipo:</strong> {bankInfo.account_type}
+            </p>
+        </>
+    )}
+</div>
 
         <div>
-            <h3 className="font-bold mb-2">
-                Tigo Money / BAC Móvil
-            </h3>
-
-            <p>
-                {paymentInfo.mobile_transfer.number}
-            </p>
-
-            <p>
-    {paymentInfo.mobile_transfer.number}
-</p>
 
 <div className="mt-6">
 
