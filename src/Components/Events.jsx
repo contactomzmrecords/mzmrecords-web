@@ -39,7 +39,7 @@ export default function Events() {
                         </h3>
 
                         <p className="max-w-xl text-white/50 leading-relaxed">
-                            We're preparing the next underground experience.
+                            We're preparing the next experience.
                             Follow MZM Records and stay tuned for upcoming
                             events.
                         </p>
