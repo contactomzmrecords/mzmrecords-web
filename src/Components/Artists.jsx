@@ -14,7 +14,14 @@ const artists = [
         image: "https://i.ibb.co/fYvBh7Mv/photo-5152664427155884976-y.jpg",
         spotify: "https://open.spotify.com/artist/2LrncjR6hDR62LtSagx1Df?si=TT1JEUJzQY2L9v0QEYO9rA",
         bio: "F3VER"
-    }
+    },
+    {
+        id: 3,
+        name: "BARAJASS",
+        image: "https://i.ibb.co/k6QM0YXh/photo-4913753607140740505-y.jpg",
+        spotify: "https://open.spotify.com/intl-es/artist/6dSJ6XtSqjj8XSQsAPDPiO?si=y7I6vmy3SmmrWejIxDBOcQ",
+        bio: "BARAJASS"
+    },
 ];
 
 export default function Artists() {
