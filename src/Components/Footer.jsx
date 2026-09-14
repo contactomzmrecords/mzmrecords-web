@@ -106,7 +106,7 @@ export default function Footer() {
     <input
       type="hidden"
       name="formGuid"
-      value="a574b881-60fc-4374-8703-04db48dd9193"
+      value="62e1b3bf-9f64-4787-83da-e79898a89551"
     />
 
     <button
