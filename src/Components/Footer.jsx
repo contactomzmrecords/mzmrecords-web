@@ -123,7 +123,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-white/5 gap-4">
           <span className="text-[10px] font-black tracking-widest text-white/30 uppercase">
-            Copyright 2026 © All rights Reserved. Design by MZM RECORDS
+            Copyright 2026 © All rights Reserved. Design by MZM Creative.
           </span>
 
           <button
