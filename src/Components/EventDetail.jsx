@@ -62,10 +62,6 @@ const bankInfo =
                 {event.name}
             </h1>
 
-            <p className="text-white/50 mb-6">
-                {event.location}
-            </p>
-
             <p className="text-white/50 mt-4">
     {new Date(event.date).toLocaleDateString()}
 </p>
@@ -77,10 +73,6 @@ const bankInfo =
 <p className="text-white/80 mt-8 max-w-3xl leading-relaxed">
     {event.description}
 </p>
-
-            <p className="text-lg text-white/80">
-                {event.description}
-            </p>
 
             <h2 className="text-2xl font-bold mt-12 mb-6">
     Tickets Disponibles
