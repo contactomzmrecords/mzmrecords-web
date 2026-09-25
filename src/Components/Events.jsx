@@ -49,11 +49,11 @@ export default function Events() {
                         </span>
                     </div>
                 ) : (
-                    <div className="grid md:grid-cols-2 gap-8">
+                    <div className="flex flex-wrap justify-center gap-8">
                         {events.map((event) => (
                             <div
                                 key={event.id}
-                                className="border border-white/10 bg-white/[0.02] overflow-hidden"
+                                className="w-full md:w-[calc(50%-1rem)] max-w-[620px] border border-white/10 bg-white/[0.02] overflow-hidden"
                             >
                                 <div className="w-full aspect-[4/5] overflow-hidden bg-black">
                                     <img
