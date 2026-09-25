@@ -58,24 +58,31 @@ const bankInfo =
                 </div>
 
                 <div className="min-w-0">
-                    <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-5">
-                        {event.name}
-                    </h1>
+            <h1 className="text-5xl font-bold mb-4">
+                {event.name}
+            </h1>
 
-                    <div className="space-y-2 text-white/50">
-                        <p>{new Date(event.date).toLocaleDateString()}</p>
-                        <p>{event.location}</p>
-                    </div>
+            <p className="text-white/50 mb-6">
+                {event.location}
+            </p>
 
-                    {event.description && (
-                        <p className="text-white/70 mt-8 max-w-3xl leading-relaxed">
-                            {event.description}
-                        </p>
-                    )}
+            <p className="text-white/50 mt-4">
+    {new Date(event.date).toLocaleDateString()}
+</p>
 
-                    <div className="pt-2">
+<p className="text-white/60 mt-2">
+    {event.location}
+</p>
 
-                    <h2 className="text-2xl font-bold mt-10 mb-6">
+<p className="text-white/80 mt-8 max-w-3xl leading-relaxed">
+    {event.description}
+</p>
+
+            <p className="text-lg text-white/80">
+                {event.description}
+            </p>
+
+            <h2 className="text-2xl font-bold mt-12 mb-6">
     Tickets Disponibles
 </h2>
 
@@ -107,8 +114,6 @@ const bankInfo =
         </div>
     ))}
 </div>
-                    </div>
-
         {selectedTicket && (
     <div className="mt-8 border border-white/10 p-6">
         <h3 className="text-xl font-bold mb-2">
@@ -361,7 +366,6 @@ setOrderStatus(updatedOrder.status);
         </div>
     </div>
 )}
-                    </div>
                 </div>
             </div>
         </section>
