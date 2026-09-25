@@ -55,11 +55,13 @@ export default function Events() {
                                 key={event.id}
                                 className="border border-white/10 bg-white/[0.02] overflow-hidden"
                             >
-                                <img
-                                    src={event.image_url}
-                                    alt={event.name}
-                                    className="w-full h-64 object-cover"
-                                />
+                                <div className="w-full aspect-[4/5] overflow-hidden bg-black">
+                                    <img
+                                        src={event.image_url}
+                                        alt={event.name}
+                                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.02]"
+                                    />
+                                </div>
 
                                 <div className="p-6">
                                     <h3 className="text-2xl font-bold mb-3">
