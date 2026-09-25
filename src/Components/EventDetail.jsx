@@ -46,11 +46,13 @@ const bankInfo =
 
     return (
         <section className="max-w-[var(--max)] mx-auto px-6 pt-40 pb-20 text-white">
-            <img
-                src={event.image_url}
-                alt={event.name}
-                className="w-full h-[500px] object-cover mb-8"
-            />
+            <div className="w-full max-w-[620px] mx-auto aspect-[4/5] overflow-hidden bg-black mb-8">
+                <img
+                    src={event.image_url}
+                    alt={event.name}
+                    className="w-full h-full object-cover"
+                />
+            </div>
 
             <h1 className="text-5xl font-bold mb-4">
                 {event.name}
