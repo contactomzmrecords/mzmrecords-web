@@ -46,19 +46,21 @@ const bankInfo =
 
     return (
         <section className="max-w-[var(--max)] mx-auto px-6 pt-40 pb-20 text-white">
-            <img
-                src={event.image_url}
-                alt={event.name}
-                className="w-full h-[500px] object-cover mb-8"
-            />
+            <div className="grid lg:grid-cols-[minmax(0,520px)_minmax(0,1fr)] gap-10 lg:gap-16 items-start">
+                <div className="lg:sticky lg:top-28 self-start">
+                    <div className="w-full aspect-[4/5] overflow-hidden bg-black">
+                <img
+                    src={event.image_url}
+                    alt={event.name}
+                    className="w-full h-full object-cover"
+                />
+                    </div>
+                </div>
 
+                <div className="min-w-0">
             <h1 className="text-5xl font-bold mb-4">
                 {event.name}
             </h1>
-
-            <p className="text-white/50 mb-6">
-                {event.location}
-            </p>
 
             <p className="text-white/50 mt-4">
     {new Date(event.date).toLocaleDateString()}
@@ -71,10 +73,6 @@ const bankInfo =
 <p className="text-white/80 mt-8 max-w-3xl leading-relaxed">
     {event.description}
 </p>
-
-            <p className="text-lg text-white/80">
-                {event.description}
-            </p>
 
             <h2 className="text-2xl font-bold mt-12 mb-6">
     Tickets Disponibles
@@ -360,6 +358,8 @@ setOrderStatus(updatedOrder.status);
         </div>
     </div>
 )}
+                </div>
+            </div>
         </section>
     );
 }
