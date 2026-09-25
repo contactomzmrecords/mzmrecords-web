@@ -361,6 +361,9 @@ setOrderStatus(updatedOrder.status);
         </div>
     </div>
 )}
+                    </div>
+                </div>
+            </div>
         </section>
     );
 }
