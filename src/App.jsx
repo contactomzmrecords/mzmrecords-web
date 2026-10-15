@@ -9,6 +9,8 @@ import Events from "./Components/Events";
 import Footer from "./Components/Footer";
 import Media from "./Components/Media";
 import EventDetail from "./Components/EventDetail";
+import Checkout from "./Components/Checkout";
+import Order from "./Components/Order";
 import { useTranslation } from "./lib/useTranslation";
 
 export default function App() {
@@ -35,6 +37,8 @@ export default function App() {
           <Route path="/radio" element={<Radio />} />
           <Route path="/events" element={<Events />} />
           <Route path="/events/:id" element={<EventDetail />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order" element={<Order />} />
           <Route path="/media" element={<Media />} />
 
           <Route path="/about" element={

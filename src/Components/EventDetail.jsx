@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getEvent, createOrder, getPaymentInfo, uploadReceipt, getOrder } from "../lib/api";
+import { useNavigate, useParams } from "react-router-dom";
+import { getEvent } from "../lib/api";
 import { useTranslation } from "../lib/useTranslation";
 
 
 export default function EventDetail() {
     const { id } = useParams();
+    const navigate = useNavigate();
     const { language, t } = useTranslation();
 
     const [event, setEvent] = useState(null);
     const [selectedTicket, setSelectedTicket] = useState(null);
-    const [fullName, setFullName] = useState("");
-    const [email, setEmail] = useState("");
-    const [confirmEmail, setConfirmEmail] = useState("");
-    const [phone, setPhone] = useState("");
     const [preregistrationName, setPreregistrationName] = useState("");
     const [preregistrationEmail, setPreregistrationEmail] = useState("");
     const [preregistrationConfirmEmail, setPreregistrationConfirmEmail] = useState("");
@@ -21,12 +18,6 @@ export default function EventDetail() {
     const [registrationSubmitted, setRegistrationSubmitted] = useState(false);
     const [formError, setFormError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [order, setOrder] = useState(null);
-    const [paymentInfo, setPaymentInfo] = useState(null);
-    const [selectedBank, setSelectedBank] = useState("lafise");
-    const [receipt, setReceipt] = useState(null);
-    const [receiptUploaded, setReceiptUploaded] = useState(false);
-    const [orderStatus, setOrderStatus] = useState(null);
 
     const [quantity, setQuantity] = useState(1);
 
@@ -66,38 +57,6 @@ export default function EventDetail() {
         }
     }
 
-    async function handleOrderSubmit(submitEvent) {
-        submitEvent.preventDefault();
-        setFormError("");
-        setIsSubmitting(true);
-
-        try {
-            const createdOrder = await createOrder({
-                event_id: event.id || id,
-                full_name: fullName,
-                email,
-                confirm_email: confirmEmail,
-                phone,
-                items: [
-                    {
-                        ticket_type_id: selectedTicket.id,
-                        quantity,
-                    },
-                ],
-                payment_method: "bank_transfer",
-                selected_bank: selectedBank,
-            });
-
-            setOrder(createdOrder);
-            const payment = await getPaymentInfo();
-            setPaymentInfo(payment);
-        } catch {
-            setFormError(t("eventDetail.orderFailed"));
-        } finally {
-            setIsSubmitting(false);
-        }
-    }
-
     useEffect(() => {
         async function loadEvent() {
             try {
@@ -118,9 +77,6 @@ export default function EventDetail() {
             </section>
         );
     }
-
-const bankInfo =
-    paymentInfo?.banks?.[selectedBank] ?? null;
 
     return (
         <section className="max-w-[var(--max)] mx-auto px-6 pt-40 pb-20 text-white">
@@ -234,7 +190,11 @@ const bankInfo =
                 </p>
 
                 <button
-    onClick={() => setSelectedTicket(ticket)}
+    type="button"
+    onClick={() => {
+        setSelectedTicket(ticket);
+        setQuantity(1);
+    }}
     className="bg-white text-black px-6 py-3 font-bold"
 >
     {t("eventDetail.buy")}
@@ -244,7 +204,7 @@ const bankInfo =
     ))}
 </div>
         {selectedTicket && (
-    <form onSubmit={handleOrderSubmit} className="mt-8 border border-white/10 p-6">
+    <div className="mt-8 border border-white/10 p-6">
         <h3 className="text-xl font-bold mb-2">
             {t("eventDetail.selectedTicket")}
         </h3>
@@ -277,187 +237,15 @@ const bankInfo =
 
 </div>
 
-        <div className="mt-6 space-y-4">
-    <input
-    type="text"
-    placeholder={t("eventDetail.fullName")}
-    value={fullName}
-    onChange={(e) => setFullName(e.target.value)}
-    required
-    className="w-full bg-black border border-white/20 p-3"
-/>
-
-    <input
-    type="email"
-    placeholder={t("eventDetail.email")}
-    value={email}
-    onChange={(e) => setEmail(e.target.value)}
-    required
-    className="w-full bg-black border border-white/20 p-3"
-/>
-
-    <input
-    type="email"
-    placeholder={t("eventDetail.confirmEmail")}
-    value={confirmEmail}
-    onChange={(e) => setConfirmEmail(e.target.value)}
-    required
-    className="w-full bg-black border border-white/20 p-3"
-/>
-
-    <input
-    type="tel"
-    placeholder={t("eventDetail.phone")}
-    value={phone}
-    onChange={(e) => setPhone(e.target.value)}
-    className="w-full bg-black border border-white/20 p-3"
-/>
-
-    <div>
-        <h3 className="font-bold mb-4">{t("eventDetail.paymentMethod")}</h3>
-        <div className="flex gap-3 mb-6">
-            {["lafise", "bac", "banpro"].map((bank) => (
-                <button
-                    key={bank}
-                    type="button"
-                    onClick={() => setSelectedBank(bank)}
-                    className={`px-4 py-2 border ${selectedBank === bank ? "bg-white text-black" : "border-white/30"}`}
-                >
-                    {bank.toUpperCase()}
-                </button>
-            ))}
-        </div>
-    </div>
-
-    {formError && <p className="text-red-400">{formError}</p>}
-
-    <button
-        type="submit"
-        disabled={isSubmitting || !!order}
-        className="bg-white text-black px-6 py-3 font-bold"
-    >
-        {isSubmitting ? t("eventDetail.processing") : t("eventDetail.continuePurchase")}
-    </button>
-</div>
-    </form>
-)}
-        {order && paymentInfo && (
-    <div className="mt-8 border border-white/10 p-6">
-        <h2 className="text-2xl font-bold mb-4">
-            {t("eventDetail.paymentInstructions")}
-        </h2>
-
-
-        <p className="mb-4">
-            {t("eventDetail.order")}: {order.order_number}
-        </p>
-
-        <div className="mb-6">
-    <h3 className="font-bold mb-4">
-        {t("eventDetail.selectedBank")}: {selectedBank.toUpperCase()}
-    </h3>
-
-    {bankInfo && (
-        <>
-            <p>
-                <strong>{t("eventDetail.bank")}:</strong> {bankInfo.bank}
-            </p>
-
-            <p>
-                <strong>{t("eventDetail.accountHolder")}:</strong> {bankInfo.account_name}
-            </p>
-
-            <p>
-                <strong>{t("eventDetail.account")}:</strong> {bankInfo.account_number}
-            </p>
-
-            <p>
-                <strong>{t("eventDetail.accountType")}:</strong> {bankInfo.account_type}
-            </p>
-        </>
-    )}
-</div>
-
-        <div>
-
-<div className="mt-6">
-
-    <label
-        htmlFor="receipt"
-        className="inline-block bg-white text-black px-6 py-3 font-bold cursor-pointer"
-    >
-        {t("eventDetail.selectReceipt")}
-    </label>
-
-    <input
-        id="receipt"
-        type="file"
-        onChange={(e) => setReceipt(e.target.files[0])}
-        className="hidden"
-    />
-
-    {receipt && (
-        <p className="mt-2 text-white/70 text-sm">
-            {receipt.name}
-        </p>
-    )}
-
-</div>
-
-
-
-<button
-    onClick={async () => {
-
-        if (!receipt) {
-            alert(t("eventDetail.selectReceiptFirst"));
-            return;
-        }
-
-        try {
-            await uploadReceipt(order.id, receipt);
-
-            const updatedOrder = await getOrder(order.id);
-
-setOrderStatus(updatedOrder.status);
-
-            setReceiptUploaded(true);
-
-            console.log("COMPROBANTE SUBIDO");
-        } catch (error) {
-            console.error(error);
-        }
-    }}
-    className="mt-4 bg-white text-black px-6 py-3 font-bold"
->
-    {t("eventDetail.sendReceipt")}
-</button>
-
-{receiptUploaded && (
-    <p className="mt-4 text-green-500">
-        {t("eventDetail.receiptSent")}
-    </p>
-)}
-
-
-{orderStatus === "review" && (
-    <p className="mt-2 text-yellow-400 font-bold">
-        🟡 {t("eventDetail.paymentReview")}
-    </p>
-)}
-
-{orderStatus === "approved" && (
-    <p className="mt-2 text-green-400 font-bold">
-        🟢 {t("eventDetail.paymentApproved")}
-    </p>
-)}
-
-{orderStatus === "rejected" && (
-    <p className="mt-2 text-red-400 font-bold">
-        🔴 {t("eventDetail.paymentRejected")}
-    </p>
-)}
-        </div>
+        <button
+            type="button"
+            onClick={() => navigate(`/checkout?event_id=${encodeURIComponent(event.id || id)}&ticket_type_id=${encodeURIComponent(selectedTicket.id)}&quantity=${quantity}`, {
+                state: { event, ticket: selectedTicket, quantity },
+            })}
+            className="mt-6 bg-white text-black px-6 py-3 font-bold"
+        >
+            {t("eventDetail.continuePurchase")}
+        </button>
     </div>
 )}
                 </>

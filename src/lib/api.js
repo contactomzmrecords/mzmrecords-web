@@ -1,5 +1,32 @@
 const API_URL = import.meta.env.VITE_TICKETNI_API;
 
+function getOrderAccessToken(orderId, fallbackToken) {
+    let storedToken = null;
+    try {
+        storedToken = orderId
+            ? window.localStorage.getItem(`ticketni_token_${orderId}`)
+            : null;
+        storedToken ||= window.localStorage.getItem("ticketni_order_access_token");
+    } catch (storageError) {
+        console.warn("Could not read the saved local order authorization token.", storageError);
+    }
+
+    if (!storedToken) {
+        try {
+            storedToken = window.sessionStorage.getItem("ticketni_order_access_token");
+        } catch (storageError) {
+            console.warn("Could not read the saved session order authorization token.", storageError);
+        }
+    }
+
+    const token = storedToken || fallbackToken;
+    if (!token) {
+        console.warn("Order access token is missing; sending the request with its order identifier only.");
+    }
+
+    return token;
+}
+
 export async function getEvents() {
 const response = await fetch(`${API_URL}/api/events`)
 
@@ -36,8 +63,11 @@ export async function createOrder(orderData) {
     return response.json();
 }
 
-export async function getPaymentInfo() {
-    const response = await fetch(`${API_URL}/api/payment-info`);
+export async function getPaymentInfo(token) {
+    const accessToken = getOrderAccessToken(null, token);
+    const response = await fetch(`${API_URL}/api/payment-info`, {
+        headers: accessToken ? { "X-Order-Access-Token": accessToken } : {},
+    });
 
     if (!response.ok) {
         throw new Error("Failed to fetch payment info");
@@ -46,15 +76,17 @@ export async function getPaymentInfo() {
     return response.json();
 }
 
-export async function uploadReceipt(orderId, file) {
+export async function uploadReceipt(orderId, file, token) {
     const formData = new FormData();
 
     formData.append("file", file);
 
+    const accessToken = getOrderAccessToken(orderId, token);
     const response = await fetch(
         `${API_URL}/api/orders/${orderId}/upload-receipt`,
         {
             method: "POST",
+            headers: accessToken ? { "X-Order-Access-Token": accessToken } : {},
             body: formData,
         }
     );
@@ -66,9 +98,13 @@ export async function uploadReceipt(orderId, file) {
     return response.json();
 }
 
-export async function getOrder(orderId) {
+export async function getOrder(orderId, token) {
+    const accessToken = getOrderAccessToken(orderId, token);
     const response = await fetch(
-        `${API_URL}/api/orders/${orderId}`
+        `${API_URL}/api/orders/${orderId}`,
+        {
+            headers: accessToken ? { "X-Order-Access-Token": accessToken } : {},
+        }
     );
 
     if (!response.ok) {
