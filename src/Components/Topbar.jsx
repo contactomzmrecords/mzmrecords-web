@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { useTranslation } from "../lib/useTranslation";
 
 export default function Topbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
+    const { language, setLanguage, t } = useTranslation();
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -26,14 +28,14 @@ export default function Topbar() {
     }, [menuOpen]);
 
     const links = [
-        { id: "home", label: "Home", path: "/" },
-        { id: "artists", label: "Artists", path: "/artists" },
-        { id: "label", label: "Label", path: "/label" },
-        { id: "radio", label: "Radio", path: "/radio" },
-        { id: "media", label: "Media", path: "/media" },
-        { id: "events", label: "Events", path: "/events" },
-        { id: "about", label: "About", path: "/about" },
-        { id: "contact", label: "Contact", path: "/contact" },
+        { id: "home", path: "/" },
+        { id: "artists", path: "/artists" },
+        { id: "label", path: "/label" },
+        { id: "radio", path: "/radio" },
+        { id: "media", path: "/media" },
+        { id: "events", path: "/events" },
+        { id: "about", path: "/about" },
+        { id: "contact", path: "/contact" },
     ];
 
     return (
@@ -61,7 +63,7 @@ export default function Topbar() {
                                     className={`relative text-[10px] font-black tracking-widest px-5 py-2 uppercase transition-all ${location.pathname === link.path ? "text-white" : "text-white/40 hover:text-white"
                                         }`}
                                 >
-                                    {link.label}
+                                    {t(`common.${link.id}`)}
                                     {location.pathname === link.path && (
                                         <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-[1px] bg-white" />
                                     )}
@@ -70,6 +72,20 @@ export default function Topbar() {
                         ))}
                     </ul>
                 </nav>
+
+                <div className="flex items-center gap-1" role="group" aria-label={t("common.language")}>
+                    {["en", "es"].map((locale) => (
+                        <button
+                            key={locale}
+                            type="button"
+                            aria-pressed={language === locale}
+                            onClick={() => setLanguage(locale)}
+                            className={`border px-2 py-1 text-[10px] font-black tracking-widest transition ${language === locale ? "border-white text-white" : "border-white/20 text-white/40 hover:text-white"}`}
+                        >
+                            {locale.toUpperCase()}
+                        </button>
+                    ))}
+                </div>
 
                 {/* Mobile Trigger */}
                 <button
@@ -97,7 +113,7 @@ export default function Topbar() {
                                     }`}
                                 onClick={() => setMenuOpen(false)}
                             >
-                                {link.label}
+                                {t(`common.${link.id}`)}
                             </Link>
                         ))}
                     </nav>

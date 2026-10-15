@@ -1,6 +1,8 @@
 import { useEffect } from "react";
+import { useTranslation } from "../lib/useTranslation";
 
 export default function Radio() {
+    const { t } = useTranslation();
     useEffect(() => {
         // Caster.fm embed script loading
         const script = document.createElement("script");
@@ -28,12 +30,12 @@ export default function Radio() {
                         </h2>
 
                         <p className="text-[var(--muted)] text-lg mb-12 max-w-md leading-relaxed">
-                            Tune in to our live broadcast to experience a curated selection of techno, exclusive sets, and underground sound exploration directly from our label.
+                            {t("radio.description")}
                         </p>
 
                         <div className="space-y-4">
                             <p className="text-[10px] font-black tracking-widest uppercase text-white/20">
-                                MZM Records — Official Broadcast
+                                {t("radio.broadcast")}
                             </p>
                         </div>
                     </div>
@@ -55,9 +57,9 @@ export default function Radio() {
                                     data-channelId=""
                                     data-rendered="false"
                                 >
-                                    <a href="https://www.caster.fm" className="text-[10px] opacity-10 hover:opacity-100 transition-opacity">Shoutcast Hosting</a>
-                                    <a href="https://www.caster.fm" className="text-[10px] opacity-10 hover:opacity-100 transition-opacity">Stream Hosting</a>
-                                    <a href="https://www.caster.fm" className="text-[10px] opacity-10 hover:opacity-100 transition-opacity">Radio Server Hosting</a>
+                                    <a href="https://www.caster.fm" className="text-[10px] opacity-10 hover:opacity-100 transition-opacity">{t("radio.shoutcastHosting")}</a>
+                                    <a href="https://www.caster.fm" className="text-[10px] opacity-10 hover:opacity-100 transition-opacity">{t("radio.streamHosting")}</a>
+                                    <a href="https://www.caster.fm" className="text-[10px] opacity-10 hover:opacity-100 transition-opacity">{t("radio.radioServerHosting")}</a>
                                 </div>
                             </div>
 

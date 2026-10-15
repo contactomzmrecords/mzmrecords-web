@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { useTranslation } from "../lib/useTranslation";
 
 const artists = [
     {
@@ -25,6 +26,7 @@ const artists = [
 ];
 
 export default function Artists() {
+    const { t } = useTranslation();
     return (
         <section id="artists" className="py-32 border-b border-[var(--line)]">
             <div className="max-w-[var(--max)] mx-auto px-6">
@@ -32,7 +34,7 @@ export default function Artists() {
                     <div>
                         
                         <h2 className="text-5xl md:text-7xl font-extrabold uppercase leading-[0.85] font-display">
-                            OUR <span className="text-white/20 italic">ARTISTS</span>
+                            {t("artists.our")} <span className="text-white/20 italic">{t("artists.artists")}</span>
                         </h2>
                     </div>
                 </div>
@@ -58,7 +60,7 @@ export default function Artists() {
                                             {artist.bio}
                                         </p>
                                         <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                                            <span className="text-[8px] font-black tracking-widest text-white uppercase">View Spotify Profile</span>
+                                            <span className="text-[8px] font-black tracking-widest text-white uppercase">{t("artists.spotifyProfile")}</span>
                                             <ArrowUpRight size={14} className="text-white" />
                                         </div>
                                     </div>

@@ -1,0 +1,103 @@
+{
+  "common": {
+    "language": "Language",
+    "home": "Home",
+    "artists": "Artists",
+    "label": "Label",
+    "radio": "Radio",
+    "media": "Media",
+    "events": "Events",
+    "about": "About",
+    "contact": "Contact",
+    "backToTop": "Back to top"
+  },
+  "hero": {
+    "tagline": "Independent electronic label, radio & events platform.",
+    "labelButton": "Label"
+  },
+  "releases": {
+    "latest": "Latest",
+    "releases": "Releases"
+  },
+  "artists": {
+    "our": "Our",
+    "artists": "Artists",
+    "spotifyProfile": "View Spotify Profile"
+  },
+  "radio": {
+    "description": "Tune in to our live broadcast to experience a curated selection of techno, exclusive sets, and underground sound exploration directly from our label.",
+    "broadcast": "MZM Records — Official Broadcast",
+    "shoutcastHosting": "Shoutcast Hosting",
+    "streamHosting": "Stream Hosting",
+    "radioServerHosting": "Radio Server Hosting"
+  },
+  "media": {
+    "heading": "Media",
+    "watchNow": "Live session - watch now"
+  },
+  "events": {
+    "live": "Live",
+    "events": "Events",
+    "noDates": "No dates announced",
+    "preparing": "We're preparing the next experience. Follow MZM Records and stay tuned for upcoming events.",
+    "comingSoon": "Coming soon",
+    "earlyAccess": "Early access",
+    "viewDetails": "View details"
+  },
+  "eventDetail": {
+    "loading": "Loading event...",
+    "earlyAccess": "Early access",
+    "registrationReceived": "Registration received.",
+    "name": "Name",
+    "email": "Email address",
+    "confirmEmail": "Confirm email address",
+    "instagramOptional": "Instagram (optional)",
+    "sending": "Sending...",
+    "register": "Register",
+    "ticketsAvailable": "Tickets available",
+    "buy": "Buy",
+    "selectedTicket": "Selected ticket",
+    "total": "Total",
+    "fullName": "Full name",
+    "phone": "Phone",
+    "paymentMethod": "Payment method: bank transfer",
+    "continuePurchase": "Continue purchase",
+    "processing": "Processing...",
+    "paymentInstructions": "Payment instructions",
+    "order": "Order",
+    "selectedBank": "Selected bank",
+    "bank": "Bank",
+    "accountHolder": "Account holder",
+    "account": "Account",
+    "accountType": "Account type",
+    "selectReceipt": "Select receipt",
+    "sendReceipt": "Send receipt",
+    "receiptSent": "Receipt sent successfully",
+    "selectReceiptFirst": "Select a receipt first",
+    "registrationFailed": "Registration could not be completed.",
+    "orderFailed": "The order could not be created.",
+    "paymentReview": "Payment under review",
+    "paymentApproved": "Payment approved",
+    "paymentRejected": "Payment rejected"
+  },
+  "about": {
+    "about": "About",
+    "us": "Us",
+    "body": "MZM Records was founded in Nicaragua with the vision of establishing itself as one of the leading forces within the country's electronic music and events scene, covering genres such as hard techno, techno, and experimental music, with a broad and diverse sonic repertoire. With the launch of MZM Records, our organization takes a significant step forward in the expansion and reach of the genre, both locally and regionally. At MZM Records, we recognize a notable lack of record labels offering platforms as comprehensive and multidimensional as ours within the techno landscape, integrating music releases, radio, events, and showcases under a unified identity. With this step, our goal is to become a valuable asset for artists who align with the vision of the label, states Ilyar Muñoz, the driving force behind MZM Records. Working closely with emerging talent, the creation of MZM Records allows us to provide stronger support by presenting their music to an ever-growing audience. Our commitment lies in nurturing, developing, and promoting young talent, and this new chapter enables us to amplify their presence within the electronic music industry. MZM Records is more than a label; it is a platform dedicated to electronic culture, artistic growth, and the development of a strong and sustainable scene."
+  },
+  "contact": {
+    "contact": "Contact",
+    "info": "Info",
+    "body": "For demos or general inquiries, contact us through our official channel or follow us on our social networks.",
+    "sendMail": "Send mail"
+  },
+  "footer": {
+    "description": "Home of raw sound — label and radio. Unfiltered. Exploring the limits of industrial and experimental sound.",
+    "quickLinks": "Quick links",
+    "newsletter": "Newsletter",
+    "newsletterDescription": "Subscribe to receive news, releases, and events before anyone else.",
+    "emailPlaceholder": "Your email",
+    "subscribe": "Subscribe",
+    "copyright": "Copyright 2026 © All rights reserved. Design by MZM Creative."
+  }
+}

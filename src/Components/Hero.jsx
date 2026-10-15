@@ -1,7 +1,9 @@
 import { ArrowDown } from "lucide-react";
 import heroBg from "../assets/hero-bg.jpg";
+import { useTranslation } from "../lib/useTranslation";
 
 export default function Hero() {
+    const { t } = useTranslation();
     return (
         <section id="home" className="relative min-h-[90vh] flex flex-col justify-center border-b border-[var(--line)] overflow-hidden">
             {/* HERO BACKGROUND */}
@@ -24,7 +26,7 @@ export default function Hero() {
 
                     {/* Subtítulo */}
                     <p className="max-w-[640px] text-[var(--muted)] text-lg md:text-xl leading-relaxed mb-10 font-medium">
-                        <span className="text-white/60 not-italic">Independent electronic label, radio & events platform.</span>
+                        <span className="text-white/60 not-italic">{t("hero.tagline")}</span>
                     </p>
 
                     {/* Botones */}
@@ -39,7 +41,7 @@ export default function Hero() {
                             href="/label"
                             className="group border border-white/20 bg-transparent text-white/80 font-black tracking-widest px-10 py-5 rounded-full transition-all hover:bg-white/5 hover:text-white hover:border-white/40"
                         >
-                            LABEL
+                            {t("hero.labelButton")}
                         </a>
                     </div>
                 </div>

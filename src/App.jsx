@@ -9,9 +9,11 @@ import Events from "./Components/Events";
 import Footer from "./Components/Footer";
 import Media from "./Components/Media";
 import EventDetail from "./Components/EventDetail";
+import { useTranslation } from "./lib/useTranslation";
 
 export default function App() {
   const { pathname } = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,17 +40,9 @@ export default function App() {
           <Route path="/about" element={
             <section className="py-32 border-b border-[var(--line)]">
               <div className="max-w-[var(--max)] mx-auto px-6">
-                <h2 className="text-5xl md:text-7xl font-extrabold uppercase italic mb-8">About  <span className="text-white/50 italic">US</span></h2>
+                <h2 className="text-5xl md:text-7xl font-extrabold uppercase italic mb-8">{t("about.about")} <span className="text-white/50 italic">{t("about.us")}</span></h2>
                 <p className="text-white/60 max-w-2xl text-lg leading-relaxed">
-                  MZM Records was founded in Nicaragua with the vision of establishing itself as one of the leading forces within the country’s electronic music and events scene, covering genres such as hard techno, techno, and experimental music, with a broad and diverse sonic repertoire.
-
-With the launch of MZM Records, our organization takes a significant step forward in the expansion and reach of the genre, both locally and regionally. At MZM Records, we recognize a notable lack of record labels offering platforms as comprehensive and multidimensional as ours within the techno landscape, integrating music releases, radio, events, and showcases under a unified identity.
-
-“With this step, our goal is to become a valuable asset for artists who align with the vision of the label,” states Ilyar Muñoz, the driving force behind MZM Records.
-
-Working closely with emerging talent, the creation of MZM Records allows us to provide stronger support by presenting their music to an ever-growing audience. Our commitment lies in nurturing, developing, and promoting young talent, and this new chapter enables us to amplify their presence within the electronic music industry.
-
-MZM Records is more than a label — it is a platform dedicated to electronic culture, artistic growth, and the development of a strong and sustainable scene.
+                  {t("about.body")}
                 </p>
               </div>
             </section>
@@ -57,9 +51,9 @@ MZM Records is more than a label — it is a platform dedicated to electronic cu
           <Route path="/contact" element={
             <section className="py-32">
               <div className="max-w-[var(--max)] mx-auto px-6">
-                <h2 className="text-5xl md:text-7xl font-extrabold uppercase italic mb-8">Contact / <span className="text-white/50 italic">INFO</span></h2>
+                <h2 className="text-5xl md:text-7xl font-extrabold uppercase italic mb-8">{t("contact.contact")} / <span className="text-white/50 italic">{t("contact.info")}</span></h2>
                 <p className="text-white/60 max-w-2xl text-lg leading-relaxed mb-12">
-                  For demos or general inquiries, contact us through our official channel or follow us on our social networks.
+                  {t("contact.body")}
                 </p>
 
                 <div className="flex flex-col md:flex-row gap-8">
@@ -69,7 +63,7 @@ MZM Records is more than a label — it is a platform dedicated to electronic cu
                     rel="noopener noreferrer"
                     className="group relative border border-white bg-white text-black font-black tracking-widest px-10 py-5 rounded-full transition-all hover:bg-transparent hover:text-white text-center"
                   >
-                    <span className="relative z-10 uppercase">SEND MAIL</span>
+                    <span className="relative z-10 uppercase">{t("contact.sendMail")}</span>
                   </a>
 
                   <a

@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { useTranslation } from "../lib/useTranslation";
 
 const releases = [
   {
@@ -41,6 +42,7 @@ const releases = [
 
 
 export default function FeaturedReleases() {
+  const { t } = useTranslation();
     return (
         <section id="label" className="py-32 border-b border-[var(--line)]">
             <div className="max-w-[var(--max)] mx-auto px-6">
@@ -48,7 +50,7 @@ export default function FeaturedReleases() {
                     <div>
                         
                         <h2 className="text-5xl md:text-7xl font-extrabold uppercase leading-[0.85] font-display">
-                            LATEST <span className="text-white/50 italic">RELEASES</span>
+                            {t("releases.latest")} <span className="text-white/50 italic">{t("releases.releases")}</span>
                         </h2>
                     </div>
                     

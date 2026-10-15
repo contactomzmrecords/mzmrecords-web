@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import logo from "../assets/logo.png";
+import { useTranslation } from "../lib/useTranslation";
 
 export default function Footer() {
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!document.querySelector('script[src="https://www.google.com/recaptcha/api.js"]')) {
@@ -15,12 +17,12 @@ export default function Footer() {
   }, []);
 
   const links = [
-    { label: "About", path: "/about" },
-    { label: "Label", path: "/label" },
-    { label: "Radio", path: "/radio" },
-    { label: "media", path: "/media" },
-    { label: "Events", path: "/events" },
-    { label: "Contact", path: "/contact" },
+    { key: "about", path: "/about" },
+    { key: "label", path: "/label" },
+    { key: "radio", path: "/radio" },
+    { key: "media", path: "/media" },
+    { key: "events", path: "/events" },
+    { key: "contact", path: "/contact" },
   ];
 
   return (
@@ -39,7 +41,7 @@ export default function Footer() {
             </div>
 
             <p className="text-[var(--muted)] max-w-sm mb-8">
-              HOME OF RAW SOUND — label and radio. Unfiltered. Exploring the limits of industrial and experimental sound.
+              {t("footer.description")}
             </p>
 
             <div className="flex gap-4">
@@ -65,15 +67,15 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-black tracking-widest text-[12px] uppercase mb-6">Quick Links</h4>
+            <h4 className="font-black tracking-widest text-[12px] uppercase mb-6">{t("footer.quickLinks")}</h4>
             <ul className="flex flex-col gap-4">
               {links.map((link) => (
-                <li key={link.label}>
+                <li key={link.key}>
                   <Link
                     to={link.path}
                     className="text-[var(--muted)] hover:text-white transition-colors uppercase text-sm font-bold"
                   >
-                    {link.label}
+                    {t(`common.${link.key}`)}
                   </Link>
                 </li>
               ))}
@@ -83,10 +85,10 @@ export default function Footer() {
           <div>
   <div>
   <h4 className="font-black tracking-widest text-[12px] uppercase mb-2">
-    NEWSLETTER
+    {t("footer.newsletter")}
   </h4>
 <p className="text-white/50 text-sm mb-4 max-w-xs">
-  Subscribe to receive news, releases, and events before anyone else.
+  {t("footer.newsletterDescription")}
 </p>
 
   <form
@@ -99,7 +101,7 @@ export default function Footer() {
       type="email"
       name="awEmail"
       required
-      placeholder="Your email"
+      placeholder={t("footer.emailPlaceholder")}
       className="bg-white/5 border border-white/10 px-4 py-3 rounded-full text-[10px] font-black tracking-widest text-white placeholder:text-white/30 focus:outline-none focus:border-white/40"
     />
 
@@ -113,7 +115,7 @@ export default function Footer() {
       type="submit"
       className="bg-white text-black font-black tracking-widest text-[10px] px-4 py-3 rounded-full hover:bg-white/90 transition"
     >
-      SUBSCRIBE
+      {t("footer.subscribe")}
     </button>
   </form>
 </div>
@@ -123,14 +125,14 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-white/5 gap-4">
           <span className="text-[10px] font-black tracking-widest text-white/30 uppercase">
-            Copyright 2026 © All rights Reserved. Design by MZM Creative.
+            {t("footer.copyright")}
           </span>
 
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="text-[10px] font-black tracking-widest text-white/30 uppercase cursor-pointer hover:text-white transition-colors"
           >
-            BACK TO TOP ↑
+            {t("common.backToTop")} ↑
           </button>
         </div>
       </div>

@@ -1,3 +1,5 @@
+import { useTranslation } from "../lib/useTranslation";
+
 const media = [
   {
     id: 1,
@@ -33,12 +35,13 @@ const media = [
 ];
 
 export default function Media() {
+  const { t } = useTranslation();
   return (
     <section className="py-32">
       <div className="max-w-[var(--max)] mx-auto px-6">
         
         <h1 className="text-6xl font-extrabold uppercase italic mb-16">
-          MEDIA
+          {t("media.heading")}
         </h1>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -57,7 +60,7 @@ export default function Media() {
               />
 
               <p className="text-sm text-white/60 mb-2">
-                LIVE SESSION - WATCH NOW
+                {t("media.watchNow")}
               </p>
 
               <h2 className="text-3xl font-bold italic uppercase">

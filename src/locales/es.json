@@ -1,0 +1,103 @@
+{
+  "common": {
+    "language": "Idioma",
+    "home": "Inicio",
+    "artists": "Artistas",
+    "label": "Sello",
+    "radio": "Radio",
+    "media": "Medios",
+    "events": "Eventos",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "backToTop": "Volver arriba"
+  },
+  "hero": {
+    "tagline": "Sello independiente de música electrónica, radio y eventos.",
+    "labelButton": "Sello"
+  },
+  "releases": {
+    "latest": "Últimos",
+    "releases": "Lanzamientos"
+  },
+  "artists": {
+    "our": "Nuestros",
+    "artists": "Artistas",
+    "spotifyProfile": "Ver perfil de Spotify"
+  },
+  "radio": {
+    "description": "Sintoniza nuestra transmisión en vivo y disfruta de una selección curada de techno, sesiones exclusivas y exploración sonora underground directamente desde nuestro sello.",
+    "broadcast": "MZM Records — Transmisión oficial",
+    "shoutcastHosting": "Alojamiento Shoutcast",
+    "streamHosting": "Alojamiento de streaming",
+    "radioServerHosting": "Alojamiento de servidor de radio"
+  },
+  "media": {
+    "heading": "Medios",
+    "watchNow": "Sesión en vivo - ver ahora"
+  },
+  "events": {
+    "live": "En vivo",
+    "events": "Eventos",
+    "noDates": "Aún no hay fechas anunciadas",
+    "preparing": "Estamos preparando la próxima experiencia. Sigue a MZM Records y mantente atento a nuestros próximos eventos.",
+    "comingSoon": "Próximamente",
+    "earlyAccess": "Acceso anticipado",
+    "viewDetails": "Ver detalles"
+  },
+  "eventDetail": {
+    "loading": "Cargando evento...",
+    "earlyAccess": "Acceso anticipado",
+    "registrationReceived": "Registro recibido.",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "confirmEmail": "Confirmar correo electrónico",
+    "instagramOptional": "Instagram (opcional)",
+    "sending": "Enviando...",
+    "register": "Registrarme",
+    "ticketsAvailable": "Entradas disponibles",
+    "buy": "Comprar",
+    "selectedTicket": "Entrada seleccionada",
+    "total": "Total",
+    "fullName": "Nombre completo",
+    "phone": "Teléfono",
+    "paymentMethod": "Método de pago: transferencia bancaria",
+    "continuePurchase": "Continuar compra",
+    "processing": "Procesando...",
+    "paymentInstructions": "Instrucciones de pago",
+    "order": "Orden",
+    "selectedBank": "Banco seleccionado",
+    "bank": "Banco",
+    "accountHolder": "Titular",
+    "account": "Cuenta",
+    "accountType": "Tipo de cuenta",
+    "selectReceipt": "Seleccionar comprobante",
+    "sendReceipt": "Enviar comprobante",
+    "receiptSent": "Comprobante enviado correctamente",
+    "selectReceiptFirst": "Selecciona un comprobante primero",
+    "registrationFailed": "No se pudo completar el registro.",
+    "orderFailed": "No se pudo crear la orden.",
+    "paymentReview": "Pago en revisión",
+    "paymentApproved": "Pago aprobado",
+    "paymentRejected": "Pago rechazado"
+  },
+  "about": {
+    "about": "Sobre",
+    "us": "Nosotros",
+    "body": "MZM Records nació en Nicaragua con la visión de consolidarse como una de las principales fuerzas de la escena de música electrónica y eventos del país, abarcando géneros como hard techno, techno y música experimental, con un repertorio sonoro amplio y diverso. Con el lanzamiento de MZM Records, nuestra organización da un paso importante para expandir el alcance del género a nivel local y regional. Reconocemos la falta de sellos discográficos que ofrezcan plataformas tan completas y multidimensionales como la nuestra dentro del panorama techno, integrando lanzamientos musicales, radio, eventos y showcases bajo una identidad común. Con este paso, buscamos ser un apoyo valioso para artistas que compartan la visión del sello, afirma Ilyar Muñoz, impulsor de MZM Records. Al trabajar de cerca con talentos emergentes, MZM Records nos permite brindarles mayor apoyo y presentar su música a una audiencia cada vez más amplia. Nuestro compromiso es acompañar, desarrollar y promover a jóvenes talentos, y este nuevo capítulo nos permite amplificar su presencia en la industria musical. MZM Records es más que un sello: es una plataforma dedicada a la cultura electrónica, el crecimiento artístico y el desarrollo de una escena sólida y sostenible."
+  },
+  "contact": {
+    "contact": "Contacto",
+    "info": "Información",
+    "body": "Para enviar demos o realizar consultas generales, contáctanos por nuestro canal oficial o síguenos en nuestras redes sociales.",
+    "sendMail": "Enviar correo"
+  },
+  "footer": {
+    "description": "Hogar del sonido crudo: sello y radio sin filtros, explorando los límites del sonido industrial y experimental.",
+    "quickLinks": "Enlaces rápidos",
+    "newsletter": "Boletín",
+    "newsletterDescription": "Suscríbete para recibir noticias, lanzamientos y eventos antes que nadie.",
+    "emailPlaceholder": "Tu correo electrónico",
+    "subscribe": "Suscribirme",
+    "copyright": "Derechos de autor © 2026. Todos los derechos reservados. Diseño por MZM Creative."
+  }
+}
