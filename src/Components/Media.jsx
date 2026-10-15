@@ -1,10 +1,26 @@
 const media = [
   {
     id: 1,
-    title: "MZM SESSION 001",
-    artist: "MELZV",
-    cover: "/media/session001.jpg",
-    youtubeUrl: "https://youtu.be/cP11i-gw4nE?si=FC8y5cU4hcxl7zJe"
+    title: "MZM SESSION 004",
+    artist: "DOUBLE J",
+    cover: "/media/session004.jpg",
+    youtubeUrl: "https://www.youtube.com/watch?v=xFKIkmdZc-g&t=495s"
+  },
+
+  {
+    id: 2,
+    title: "MZM SESSION 003",
+    artist: "LUIS ALEMAN",
+    cover: "/media/session003.jpg",
+    youtubeUrl: "https://www.youtube.com/watch?v=SE_u4sJOkhE&t=1281s"
+  },
+
+  {
+    id: 2,
+    title: "MZM SESSION 002",
+    artist: "STEVE NASH",
+    cover: "/media/session002.jpg",
+    youtubeUrl: "https://www.youtube.com/watch?v=yeQJ6_W5Cqc&t=149s"
   },
 
   {
