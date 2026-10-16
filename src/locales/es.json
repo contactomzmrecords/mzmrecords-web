@@ -47,7 +47,7 @@
   "eventDetail": {
     "loading": "Cargando evento...",
     "earlyAccess": "Acceso anticipado",
-    "registrationReceived": "Registro recibido.",
+    "registrationReceived": "Registro recibido. Revisa tu bandeja de entrada (y la carpeta de spam) para confirmar tu acceso.",
     "name": "Nombre",
     "email": "Correo electrónico",
     "confirmEmail": "Confirmar correo electrónico",
